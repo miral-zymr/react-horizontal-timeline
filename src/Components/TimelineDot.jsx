@@ -15,6 +15,11 @@ const dots = {
     textAlign: 'center',
     paddingBottom: 15,
   },
+  label: {
+    position: 'absolute',
+    top: 10,
+    textAlign: 'center',
+  },
   /**
    * The base style information for the event dot that appers exactly on the timeline
    */
@@ -88,6 +93,7 @@ class TimelineDot extends React.Component {
     }
 
     return (
+      <>
       <li
         key={ this.props.date }
         id={`timeline-dot-${this.props.date}`}
@@ -109,6 +115,26 @@ class TimelineDot extends React.Component {
           style={this.__getDotStyles__(dotType, this.props.date)}
         />
       </li>
+      <li
+        key={ this.props.scanType }
+        id={`timeline-dot-${this.props.scanType}`}
+        className={`${dotType} dot-label`}
+        onClick={() => this.props.onClick(this.props.index)}
+        style={[
+        dots.label,
+        {
+          left: this.props.distanceFromOrigin - this.props.labelWidth / 2,
+          cursor: 'pointer',
+          width: this.props.labelWidth,
+          ':hover': {}, // We need this to track the hover state of this element
+        }
+      ]}
+      >
+      <div>
+        {this.props.scanCategory} <br /> {this.props.scanType}
+      </div>
+      </li>
+      </>
     );
   }
 }

@@ -22,6 +22,8 @@ const EventsBar = ({ events, selectedIndex, styles, handleDateClick, labelWidth 
         distanceFromOrigin={event.distance}
         label={event.label}
         date={event.date}
+        scanType={event.scanType}
+        scanCategory={event.scanCategory}
         index={index}
         key={index}
         onClick={handleDateClick}
@@ -43,6 +45,8 @@ EventsBar.propTypes = {
     distance: PropTypes.number.isRequired,
     label: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
+    scanType: PropTypes.string,
+    scanCategory: PropTypes.string,
   })).isRequired,
   // The index of the selected event
   selectedIndex: PropTypes.number,
