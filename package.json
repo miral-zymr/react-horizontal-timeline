@@ -1,15 +1,17 @@
 {
-  "name": "react-horizontal-timeline",
-  "version": "1.5.3",
+  "name": "@miral-zymr/react-horizontal-timeline",
+  "version": "1.0.0",
   "description": "A horizontal timeline component made using react",
   "main": "./dist/react-horizontal-timeline.js",
   "scripts": {
     "start": "node tools/server.js",
     "build": "cross-env NODE_ENV=production webpack --config tools/webpack.config.prod.js",
     "build:demos": "cross-env NODE_ENV=production webpack --config tools/webpack.config.demos.js",
-    "prepublish": "yarn build",
+    "prepublish": "npm run build",
     "lint": "./node_modules/.bin/eslint --config tools/lint-config.js src/ demos/demo-swipeable-views/HorizontalTimelineConfigurator.jsx",
-    "test": "jest"
+    "test": "ava",
+    "test:cover": "nyc ava",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
