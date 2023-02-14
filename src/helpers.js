@@ -22,7 +22,7 @@ export const daydiff = (first, second) => Math.round((second - first));
  * @param {array} rows An array (of size 2) of arrays (of equal size).
  * @return {array} An array (of size of either array in param) of arrays (of size 2)
  */
-export const zip = rows => rows[0].map((_, c) => rows.map(row => row[c]));
+export const zip = rows => rows && rows[0].map((_, c) => rows.map(row => row[c]));
 
 
 /**
@@ -33,7 +33,7 @@ export const zip = rows => rows[0].map((_, c) => rows.map(row => row[c]));
 export const dateDistanceExtremes = (dates) => {
   // determine the minimum distance among events
   const datePairs = zip([ dates.slice(0, -1), dates.slice(1) ]);
-  const dateDistances = datePairs.map(([ x, y ]) => daydiff(x, y));
+  const dateDistances = datePairs && datePairs.map(([ x, y ]) => daydiff(x, y));
 
   // return the minimum distance between two dates but considering that all dates
   // are the same then return the provided minimum seperation.
@@ -58,6 +58,9 @@ export const dateDistanceExtremes = (dates) => {
 // the interface for this function is pure
 export const cummulativeSeperation = (dates, labelWidth, minEventPadding, maxEventPadding, startPadding) => {
   // using dynamic programming to set up the distance from the origin of the timeline.
+  if (!dates) {
+    return null
+  }
   const distances = new Array(dates.length);
   distances[0] = startPadding;
 

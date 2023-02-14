@@ -17,7 +17,7 @@ const EventsBar = ({ events, selectedIndex, styles, handleDateClick, labelWidth 
       listStyle: 'none'
     }}
   >
-    {events.map((event, index) =>
+    {events && events.map((event, index) =>
       <TimelineDot
         distanceFromOrigin={event.distance}
         label={event.label}

@@ -35,8 +35,8 @@ class EventsBar extends React.Component {
   }
 
   componentDidMount() {
-    const selectedEvent = this.props.events[this.props.index];
-    this.slideToPosition(-(selectedEvent.distance - (this.props.visibleWidth / 2)), this.props);
+    const selectedEvent = this.props.events && this.props.events[this.props.index];
+    this.slideToPosition(-(selectedEvent && selectedEvent.distance - (this.props.visibleWidth / 2)), this.props);
   }
 
   componentWillUnmount() {
@@ -166,7 +166,7 @@ class EventsBar extends React.Component {
       : {};
 
     // filled value = distane from origin to the selected event
-    const filledValue = this.props.events[this.props.index].distance - this.props.barPaddingLeft;
+    const filledValue = this.props.event && this.props.events[this.props.index].distance - this.props.barPaddingLeft;
     const eventLineWidth = this.props.totalWidth - this.props.barPaddingLeft - this.props.barPaddingRight;
 
     return (
