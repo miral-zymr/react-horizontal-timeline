@@ -38,11 +38,11 @@ export default class HorizontalTimelineContent extends React.Component {
   }
 
   componentWillMount() {
-    this.values = {date: this.props.content.map((entry) => entry.date), scanType: this.props.content.map((entry) => entry.scanType), scanCategory: this.props.content.map((entry) => entry.scanCategory)};
+    this.values = this.props.content.map((entry) => { return { date: entry.date, scanType: entry.scanType, scanCategory: entry.scanCategory } });
   }
 
   componentWillReceiveProps(nextProps) {
-    this.values = {date: nextProps.content.map((entry) => entry.date), scanType: nextProps.content.map((entry) => entry.scanType), scanCategory: nextProps.content.map((entry) => entry.scanCategory)};
+    this.values = nextProps.content.map((entry) => { return { date: entry.date, scanType: entry.scanType, scanCategory: entry.scanCategory } });
   }
 
   render() {
