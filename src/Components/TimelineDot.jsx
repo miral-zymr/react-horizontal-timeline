@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
+import { OverlayTrigger, Popover } from 'react-bootstrap';
 
 /**
  * The static/non-static styles Information for a single event dot on the timeline
@@ -14,11 +15,6 @@ const dots = {
     bottom: 0,
     textAlign: 'center',
     paddingBottom: 15,
-  },
-  label: {
-    position: 'absolute',
-    top: 10,
-    textAlign: 'center',
   },
   /**
    * The base style information for the event dot that appers exactly on the timeline
@@ -92,49 +88,39 @@ class TimelineDot extends React.Component {
       dotType = 'present';
     }
 
+    const popover = (
+      <Popover id="popover-basic">
+          <Popover.Body>
+            <span><strong>Category:</strong> {this.props.scanCategory}</span><br />
+            <span><strong>Type:</strong> {this.props.scanType}</span>
+          </Popover.Body>
+      </Popover>
+    );
+
     return (
-      <>
-      <li
-        key={ this.props.date }
-        id={`timeline-dot-${this.props.date}`}
-        className={`${dotType} dot-label`}
-        onClick={() => this.props.onClick(this.props.index)}
-        style={[
-          dots.links,
-          {
-            left: this.props.distanceFromOrigin - this.props.labelWidth / 2,
-            cursor: 'pointer',
-            width: this.props.labelWidth,
-            ':hover': {}, // We need this to track the hover state of this element
-          }
-        ]}
-      >
-        { this.props.label }
-        <span
-          key='dot-dot'
-          style={this.__getDotStyles__(dotType, this.props.date)}
-        />
-      </li>
-      <li
-        key={ this.props.scanType }
-        id={`timeline-dot-${this.props.scanType}`}
-        className={`${dotType} dot-label`}
-        onClick={() => this.props.onClick(this.props.index)}
-        style={[
-        dots.label,
-        {
-          left: this.props.distanceFromOrigin - this.props.labelWidth / 2,
-          cursor: 'pointer',
-          width: this.props.labelWidth,
-          ':hover': {}, // We need this to track the hover state of this element
-        }
-      ]}
-      >
-      <div>
-        {this.props.scanCategory} <br /> {this.props.scanType}
-      </div>
-      </li>
-      </>
+      <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={popover}>
+        <li
+          key={ this.props.date }
+          id={`timeline-dot-${this.props.date}`}
+          className={`${dotType} dot-label`}
+          onClick={() => this.props.onClick(this.props.index)}
+          style={[
+            dots.links,
+            {
+              left: this.props.distanceFromOrigin - this.props.labelWidth / 2,
+              cursor: 'pointer',
+              width: this.props.labelWidth,
+              ':hover': {}, // We need this to track the hover state of this element
+            }
+          ]}
+        >
+          { this.props.label }
+          <span
+            key='dot-dot'
+            style={this.__getDotStyles__(dotType, this.props.date)}
+          />
+        </li>
+      </OverlayTrigger>
     );
   }
 }
