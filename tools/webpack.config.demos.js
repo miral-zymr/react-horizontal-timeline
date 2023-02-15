@@ -6,7 +6,7 @@
 /* eslint-disable no-process-env */
 const webpack = require('webpack');
 const path = require('path');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
 const rules = [
   // Babel enables the use of ES6 today by transpiling your ES6 JavaScript into equivalent ES5 source
@@ -50,7 +50,8 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 module.exports = {
   mode: 'production',
   optimization: {
-    minimizer: [new UglifyJSPlugin()]
+    minimize: true,
+    minimizer: [new TerserPlugin()],
   },
   entry: [
     path.join(process.cwd(), './demos/demo-swipeable-views/index.js')

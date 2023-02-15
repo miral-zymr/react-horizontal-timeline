@@ -90,10 +90,10 @@ class TimelineDot extends React.Component {
 
     const popover = (
       <Popover id="popover-basic">
-          <Popover.Body>
-            <span><strong>Category:</strong> {this.props.scanCategory}</span><br />
-            <span><strong>Type:</strong> {this.props.scanType}</span>
-          </Popover.Body>
+        <Popover.Body>
+          <span><strong>Category:</strong> {this.props.scanCategory}</span><br />
+          <span><strong>Type:</strong> {this.props.scanType}</span>
+        </Popover.Body>
       </Popover>
     );
 
