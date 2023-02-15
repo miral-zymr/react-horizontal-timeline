@@ -6,7 +6,7 @@ const path = require('path');
 const sourcePath = path.join(__dirname, '..', 'src');
 const distPath = path.join(__dirname, '..', 'dist');
 const webpack = require('webpack');
-const TerserPlugin = require("terser-webpack-plugin");
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const rules = [
   // Babel enables the use of ES6 today by transpiling your ES6 JavaScript into equivalent ES5
@@ -21,8 +21,7 @@ const rules = [
 module.exports = {
   mode: 'production',
   optimization: {
-    minimize: true,
-    minimizer: [new TerserPlugin()],
+    minimizer: [new UglifyJSPlugin()]
   },
   entry: [
     path.join(sourcePath, 'Components/HorizontalTimeline.jsx')
