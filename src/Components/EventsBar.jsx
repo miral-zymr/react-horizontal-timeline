@@ -217,6 +217,7 @@ class EventsBar extends React.Component {
               />
               <Events
                 events={this.props.events}
+                tooltip={this.props.tooltip}
                 selectedIndex={this.props.index}
                 styles={this.props.styles}
                 handleDateClick={this.props.indexClick}
@@ -244,6 +245,7 @@ EventsBar.propTypes = {
     distance: PropTypes.number.isRequired,
     label: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
+    tooltip: PropTypes.element
   })).isRequired,
   isTouchEnabled: PropTypes.bool.isRequired,
   totalWidth: PropTypes.number.isRequired,

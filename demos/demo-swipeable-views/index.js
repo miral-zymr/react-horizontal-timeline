@@ -18,8 +18,7 @@ class App extends React.Component {
     this.data = GameInfo.map((game, index) => {
       return ({
         date: game.date,
-        scanType: game.scanType,
-        scanCategory: game.scanCategory,
+        tooltip: game.tooltip,
         component: (
           <div className='container' key={index}>
             <h1>{ `The Elder Scrolls ${index + 1}:`}</h1>
