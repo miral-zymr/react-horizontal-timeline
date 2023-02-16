@@ -36,7 +36,7 @@ class HorizontalTimeline extends React.Component {
     }
 
     // Convert the date strings to actual date objects
-    const dates = props.values && props.values.map((value) => new Date(value.date))
+    const dates = props.values.map((value) => new Date(value));
     // Calculate the distances for all events
     const distances = cummulativeSeperation(
       dates,
@@ -47,12 +47,11 @@ class HorizontalTimeline extends React.Component {
     );
 
     // Convert the distances and dates to events
-    const events = distances && distances.map((distance, index) => ({
+    const events = distances.map((distance, index) => ({
       distance,
-      label: props.getLabel(props.values[index].date, index),
-      date: props.values[index].date,
-      scanType: props.values[index].scanType,
-      scanCategory: props.values[index].scanCategory
+      label: props.getLabel(props.values[index], index),
+      date: props.values[index],
+      tooltip: props.tooltip && props.tooltip[index]
     }));
 
     const visibleWidth = this.props.containerWidth - 80;
@@ -102,6 +101,8 @@ HorizontalTimeline.propTypes = {
   index: PropTypes.number,
   // Array containing the sorted date strings
   values: PropTypes.arrayOf(PropTypes.object).isRequired,
+  // Array containing the tooltip element according to date index
+  tootlip: PropTypes.arrayOf(PropTypes.element),
   // Function that takes the index of the array as argument
   indexClick: PropTypes.func,
   // Function to calculate the label based on the date string

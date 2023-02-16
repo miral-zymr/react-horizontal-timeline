@@ -244,6 +244,7 @@ EventsBar.propTypes = {
     distance: PropTypes.number.isRequired,
     label: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
+    tooltip: PropTypes.element
   })).isRequired,
   isTouchEnabled: PropTypes.bool.isRequired,
   totalWidth: PropTypes.number.isRequired,

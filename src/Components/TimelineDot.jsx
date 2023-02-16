@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Radium from 'radium';
-import { OverlayTrigger, Popover } from 'react-bootstrap';
+import { OverlayTrigger } from 'react-bootstrap';
 
 /**
  * The static/non-static styles Information for a single event dot on the timeline
@@ -88,17 +88,8 @@ class TimelineDot extends React.Component {
       dotType = 'present';
     }
 
-    const popover = (
-      <Popover id="popover-basic">
-        <Popover.Body>
-          <span><strong>Category:</strong> {this.props.scanCategory}</span><br />
-          <span><strong>Type:</strong> {this.props.scanType}</span>
-        </Popover.Body>
-      </Popover>
-    );
-
     return (
-      <OverlayTrigger trigger={['hover', 'focus']} placement="bottom" overlay={popover}>
+      <OverlayTrigger trigger={this.props.tooltip ? ['hover', 'focus'] : false} placement="bottom" overlay={this.props.tooltip}>
         <li
           key={ this.props.date }
           id={`timeline-dot-${this.props.date}`}
@@ -140,6 +131,8 @@ TimelineDot.propTypes = {
   onClick: PropTypes.func.isRequired,
   // The date of the event (required to display it)
   label: PropTypes.string.isRequired,
+  // the tooltip of the event
+  tooltip: PropTypes.element,
   // The width you want the labels to be
   labelWidth: PropTypes.number.isRequired,
   // The numerical value in pixels of the distance from the origin
