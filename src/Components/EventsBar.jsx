@@ -217,7 +217,6 @@ class EventsBar extends React.Component {
               />
               <Events
                 events={this.props.events}
-                tooltip={this.props.tooltip}
                 selectedIndex={this.props.index}
                 styles={this.props.styles}
                 handleDateClick={this.props.indexClick}

@@ -10,7 +10,7 @@ import TimelineDot from './TimelineDot';
  * @param  {object} props The props from parent mainly styles
  * @return {StatelessFunctionalReactComponent} Markup Information for the fader
  */
-const EventsBar = ({ events, selectedIndex, styles, handleDateClick, labelWidth, tooltip }) => (
+const EventsBar = ({ events, selectedIndex, styles, handleDateClick, labelWidth }) => (
   <ol
     className='events-bar'
     style={{
