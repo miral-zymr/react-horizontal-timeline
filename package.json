@@ -1,42 +1,48 @@
 {
-  "name": "@miral-zymr/react-horizontal-timeline",
+  "name": "react-horizontal-timeline-tooltip",
   "version": "1.0.0",
-  "description": "A horizontal timeline component made using react",
+  "description": "A horizontal timeline component made using react, with a customization of displaying custom content with tooltip",
   "main": "./dist/react-horizontal-timeline.js",
   "scripts": {
     "start": "node tools/server.js",
     "build": "cross-env NODE_ENV=production webpack --config tools/webpack.config.prod.js",
     "build:demos": "cross-env NODE_ENV=production webpack --config tools/webpack.config.demos.js",
     "prepublish": "npm run build",
-    "lint": "./node_modules/.bin/eslint --config tools/lint-config.js src/ demos/demo-swipeable-views/HorizontalTimelineConfigurator.jsx",
+    "lint": "eslint --config tools/lint-config.js src/ demos/demo-swipeable-views/HorizontalTimelineConfigurator.jsx",
     "test": "ava",
     "test:cover": "nyc ava",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jckdrpr/react-horizontal-timeline"
+    "url": "git+https://github.com/miral-zymr/react-horizontal-timeline-tooltip"
   },
   "keywords": [
     "react",
     "timeline",
     "horizontal",
     "react-motion",
-    "react-component"
+    "react-component",
+    "custom-timeline",
+    "horizontal-timeline",
+    "timeline-component",
+    "reactjs"
   ],
-  "author": "Sherub Thakur",
+  "author": "miral-zymr",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jckdrpr/react-horizontal-timeline/issues"
+    "url": "https://github.com/miral-zymr/react-horizontal-timeline-tooltip/"
   },
-  "homepage": "https://github.com/jckdrpr/react-horizontal-timeline",
+  "homepage": "https://github.com/miral-zymr/react-horizontal-timeline-tooltip",
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.1.0",
     "color": "^3.0.0",
     "prop-types": "^15.6.0",
     "radium": "^0.25.0",
+    "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-dimensions": "2.0.0-alpha2",
+    "react-dom": "^18.2.0",
     "react-icons": "^3.1.0",
     "react-motion": "^0.5.0"
   },
@@ -71,9 +77,5 @@
     "webpack": "^4.5.0",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.3"
-  },
-  "peerDependencies": {
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0"
   }
 }
